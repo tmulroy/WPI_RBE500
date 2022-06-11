@@ -1,0 +1,2 @@
+hw1:quat_to_euler
+-DCATKIN_DEVEL_PREFIX=/home/tom/rbe500-ros/devel -DCMAKE_INSTALL_PREFIX=/home/tom/rbe500-ros/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/tom/rbe500-ros/devel
+
+Name: hw1
+Description: Description of hw1
+Version: 0.0.0
+Cflags: -I/home/tom/rbe500-ros/devel/include -I/home/tom/rbe500-ros/src/hw1/include
+Libs: -L${prefix}/lib -lhw1
+Requires: message_runtime roscpp rospy std_msgs
