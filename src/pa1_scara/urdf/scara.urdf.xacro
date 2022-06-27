@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<robot name="scara">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.025" radius="1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <transmission name="base_motor_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="base_swivel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="base_to_L1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <joint name="base_to_L1" type="revolute">
+    <parent link="base_link"/>
+    <child link="L1"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.025"/>
+    <limit effort="30" velocity="1.0"/>
+  </joint>
+
+
+  <link name="L1">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.525"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <transmission name="elbow_motor_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="elbow_swivel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="L1_to_L2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <joint name="L1_to_L2" type="revolute">
+    <parent link="L1"/>
+    <child link="L2"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="1.5707 0 0" xyz="0 0 1.525"/>
+    <limit effort="30" velocity="1.0"/>
+  </joint>
+
+  <link name="L2">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 1.525"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="L2_to_L3" type="fixed">
+    <parent link="L2"/>
+    <child link="L3"/>
+    <origin rpy="0 0 0" xyz="0 0 2.025"/>
+  </joint>
+
+  <link name="L3">
+    <visual>
+      <geometry>
+        <box size="0.25 0.25 0.25"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 2.0375"/>
+    </visual>
+    <!-- <collision>
+      <geometry>
+        <box size="0.25 0.25 0.25"/>
+      </geometry>
+    </collision> -->
+  </link>
+
+  <joint name="L3_to_end_effector" type="prismatic">
+    <parent link="L3"/>
+    <child link="end_effector"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.25 0 2.0375"/>
+    <limit effort="30" velocity="1.0"/>
+  </joint>
+
+  <link name="end_effector">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.025"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0.25 0 2.0375"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.5" radius="0.025"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>

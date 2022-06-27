@@ -4,7 +4,7 @@ import rospy
 from geometry_msgs.msg import Quaternion
 
 def callback(q):
-    rospy.loginfo(rospy.get_caller_id() + "I heard %s", q)
+    # rospy.loginfo(rospy.get_caller_id() + "I heard %s", q)
 
     # roll (x-axis-rotation)
     sinr_cosp = 2 * (q.w * q.x + q.y * q.z)
@@ -14,7 +14,7 @@ def callback(q):
     # pitch (y-axis rotation)
     sinp = 2 * (q.w * q.y - q.z * q.z)
     if abs(sinp) >= 1:
-        pitch = math.copysign(pi/2,sinp)
+        pitch = math.copysign(math.pi/2,sinp)
     else:
         pitch = math.asin(sinp)
 
@@ -30,7 +30,6 @@ def listener():
     rospy.init_node('listener', anonymous=True)
 
     rospy.Subscriber("quat_convert", Quaternion, callback)
-
 
     rospy.spin()
 

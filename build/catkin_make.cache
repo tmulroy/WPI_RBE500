@@ -1,2 +1,2 @@
-hw1:quat_to_euler
+fk:hw1:pa1_scara:quat_to_euler:scara_sim
 -DCATKIN_DEVEL_PREFIX=/home/tom/rbe500-ros/devel -DCMAKE_INSTALL_PREFIX=/home/tom/rbe500-ros/install -G Unix Makefiles

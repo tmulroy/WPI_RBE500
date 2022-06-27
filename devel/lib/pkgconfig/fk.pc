@@ -1,0 +1,8 @@
+prefix=/home/tom/rbe500-ros/devel
+
+Name: fk
+Description: Description of fk
+Version: 0.0.0
+Cflags: -I/home/tom/rbe500-ros/devel/include -I/home/tom/rbe500-ros/src/fk/include
+Libs: -L${prefix}/lib -lfk
+Requires: roscpp rospy std_msgs

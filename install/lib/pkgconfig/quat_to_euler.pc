@@ -1,0 +1,8 @@
+prefix=/home/tom/rbe500-ros/install
+
+Name: quat_to_euler
+Description: Description of quat_to_euler
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lquat_to_euler -lgeometry_msgs
+Requires: message_runtime roscpp rospy

@@ -1,0 +1,8 @@
+prefix=/home/tom/rbe500-ros/install
+
+Name: scara_sim
+Description: Description of scara_sim
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

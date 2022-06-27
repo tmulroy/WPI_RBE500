@@ -1,0 +1,8 @@
+prefix=/home/tom/rbe500-ros/install
+
+Name: pa1_scara
+Description: Description of pa1_scara
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

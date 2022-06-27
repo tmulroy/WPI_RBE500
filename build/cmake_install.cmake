@@ -131,8 +131,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/tom/rbe500-ros/build/gtest/cmake_install.cmake")
+  include("/home/tom/rbe500-ros/build/fk/cmake_install.cmake")
   include("/home/tom/rbe500-ros/build/hw1/cmake_install.cmake")
   include("/home/tom/rbe500-ros/build/quat_to_euler/cmake_install.cmake")
+  include("/home/tom/rbe500-ros/build/pa1_scara/cmake_install.cmake")
+  include("/home/tom/rbe500-ros/build/scara_sim/cmake_install.cmake")
 
 endif()
 
