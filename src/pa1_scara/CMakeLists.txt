@@ -57,15 +57,13 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 # add_message_files(
 #   FILES
-#   Message1.msg
-#   Message2.msg
+#   ReferencePosition.msg
 # )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
 #   FILES
-#   Service1.srv
-#   Service2.srv
+#   MoveLastJoint.srv
 # )
 
 ## Generate actions in the 'action' folder
@@ -76,10 +74,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+ #generate_messages(
+ #  DEPENDENCIES
+ #  std_msgs
+ #)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -111,10 +109,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES pa1_scara
-#  CATKIN_DEPENDS gazebo_ros gazebo_ros_control joint_state_controller position_controllers robot_state_publisher roscpp rospy rviz std_msgs urdf_tutorial xacro
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES pa1_scara
+  CATKIN_DEPENDS gazebo_ros gazebo_ros_control joint_state_controller position_controllers robot_state_publisher roscpp rospy rviz std_msgs urdf_tutorial xacro
+  DEPENDS system_lib
 )
 
 ###########
@@ -167,10 +165,10 @@ include_directories(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+ catkin_install_python(PROGRAMS
+   scripts/PositionController_v2.py
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

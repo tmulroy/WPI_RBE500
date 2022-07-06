@@ -1,0 +1,10 @@
+(cl:defpackage pa1_scara-srv
+  (:use )
+  (:export
+   "MOVELASTJOINT"
+   "<MOVELASTJOINT-REQUEST>"
+   "MOVELASTJOINT-REQUEST"
+   "<MOVELASTJOINT-RESPONSE>"
+   "MOVELASTJOINT-RESPONSE"
+  ))
+

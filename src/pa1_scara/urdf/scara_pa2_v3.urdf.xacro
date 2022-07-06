@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<robot name="scara">
+
+ <!-- Used for fixing robot to Gazebo 'base_link' -->
+  <link name="world"/>
+
+  <joint name="world_to_L1" type="fixed">
+    <parent link="world"/>
+    <child link="L1"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.025"/>
+    <limit effort="30" velocity="1.0"/>
+  </joint>
+
+  <link name="L1">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.525"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1" />
+        <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="L1_to_L2" type="fixed">
+    <parent link="L1"/>
+    <child link="L2"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="1.5707 0 0" xyz="0 0 1.525"/>
+    <limit effort="30" velocity="1.0"/>
+  </joint>
+
+  <link name="L2">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 1.525"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1" radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1" />
+        <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="L2_to_end_effector" type="prismatic">
+    <parent link="L2"/>
+    <child link="end_effector"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.25 0 2.0375"/>
+    <limit upper="5" lower="3" effort="30" velocity="1.0"/>
+  </joint>
+
+  <transmission name="end_effector_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="end_effector_prismatic_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="L2_to_end_effector">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="end_effector">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.025"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0.25 0 2.0375"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.5" radius="0.025"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1" />
+        <inertia
+          ixx="1.0" ixy="0.0" ixz="0.0"
+          iyy="1.0" iyz="0.0"
+          izz="1.0" />
+    </inertial>
+  </link>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/SCARA</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>

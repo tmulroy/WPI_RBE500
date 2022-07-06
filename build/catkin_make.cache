@@ -1,2 +1,2 @@
-fk:hw1:pa1_scara:quat_to_euler:scara_sim
+fk:gazebo_ros_demos/gazebo_tutorials:gazebo_ros_demos/rrbot_control:gazebo_ros_demos/rrbot_description:gazebo_ros_demos/rrbot_gazebo:hw1:pa1:pa1_scara:quat_to_euler:scara_sim
 -DCATKIN_DEVEL_PREFIX=/home/tom/rbe500-ros/devel -DCMAKE_INSTALL_PREFIX=/home/tom/rbe500-ros/install -G Unix Makefiles

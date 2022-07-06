@@ -3,6 +3,6 @@ prefix=/home/tom/rbe500-ros/devel
 Name: pa1_scara
 Description: Description of pa1_scara
 Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
+Cflags: -I/home/tom/rbe500-ros/src/pa1_scara/include
+Libs: -L${prefix}/lib -lpa1_scara
+Requires: gazebo_ros gazebo_ros_control joint_state_controller position_controllers robot_state_publisher roscpp rospy rviz std_msgs urdf_tutorial xacro

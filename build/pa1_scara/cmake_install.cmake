@@ -52,3 +52,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/pa1_scara" TYPE FILE FILES "/home/tom/rbe500-ros/src/pa1_scara/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pa1_scara" TYPE PROGRAM FILES "/home/tom/rbe500-ros/build/pa1_scara/catkin_generated/installspace/PositionController_v2.py")
+endif()
+

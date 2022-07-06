@@ -1,0 +1,27 @@
+<launch>
+  <arg name="model" default="$(find pa1_scara)/urdf/scara_pa2_v3.urdf.xacro"/>
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <include file="$(find pa1_scara)/launch/gazebo.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" /> -->
+
+  <rosparam command="load"
+            file="$(find pa1_scara)/config/scara_control.yaml"
+             />
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/SCARA" args="L2_to_end_effector_position_controller joint_state_controller"></node>
+
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+      respawn="false" output="screen">
+      <remap from="/joint_states" to="/SCARA/joint_states" />
+    </node>
+
+</launch>
